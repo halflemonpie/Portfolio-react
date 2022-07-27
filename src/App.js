@@ -131,7 +131,7 @@ function App() {
                 href="https://tiny-babka-6d7956.netlify.app/"
               >
                 <div className="d-flex justify-content-center align-items-center">
-                  <img src="https://user-images.githubusercontent.com/104039077/169392831-2e14d356-ab61-4bac-90bf-ccaa04082ef8.png" />
+                  <img src="https://user-images.githubusercontent.com/104039077/169392831-2e14d356-ab61-4bac-90bf-ccaa04082ef8.png" alt="project1"/>
                 </div>
               </a>
               <a
@@ -139,7 +139,7 @@ function App() {
                 href="https://calm-sherbet-80ad34.netlify.app/"
               >
                 <div className="d-flex justify-content-center align-items-center">
-                  <img src={project2} />
+                  <img src={project2} alt="project2"/>
                 </div>
               </a>
             </div>
@@ -149,12 +149,12 @@ function App() {
                 href="https://npm-start-fried-rice-kingdom.netlify.app/"
               >
                 <div className="d-flex justify-content-center align-items-center">
-                  <img src="https://user-images.githubusercontent.com/47561235/176779538-558050ed-8d1e-4644-b3c2-575b0c30d1b4.png" />
+                  <img src="https://user-images.githubusercontent.com/47561235/176779538-558050ed-8d1e-4644-b3c2-575b0c30d1b4.png" alt="project3"/>
                 </div>
               </a>
               <a target="about_blank" href="https://boat-fishing.netlify.app/">
                 <div className="d-flex justify-content-center align-items-center">
-                  <img src={project4} />
+                  <img src={project4} alt="project4"/>
                 </div>
               </a>
             </div>
