@@ -2,61 +2,67 @@ import "./App.css";
 import photo from "./images/my_photo.jpeg";
 import project2 from "./images/project2.png";
 import project4 from "./images/project4.png";
+import { useState } from "react";
+
+// to-do:
+// animation for home page
 
 function App() {
+  const [hidden, setHidden] = useState({
+    project1: true,
+    project2: false,
+    project3: false,
+    project4: false,
+  });
+
+  const handleShown = (project) => {
+    console.log("showing detail");
+    setHidden({ ...hidden, [project]: false });
+  };
+
+  const handleHidden = (project) => {
+    console.log("hiding detail");
+    setHidden({ ...hidden, [project]: true });
+  };
+
   return (
     <div className="App">
       <header>
-        <nav className="navbar bg-light">
-          <div className="container-fluid">
-            <ul className="nav">
-              <li className="nav-item">
-                <a className="nav-link" href="#home">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#about">
-                  About
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#projects">
-                  Projects
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#contact">
-                  Contact
-                </a>
-              </li>
-            </ul>
-            <ul className="nav">
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  target="about_blank"
-                  href="https://www.linkedin.com/in/yonghaihuang/"
-                >
-                  <i class="fa-brands fa-linkedin"></i>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  target="about_blank"
-                  href="https://github.com/halflemonpie"
-                >
-                  <i class="fa-brands fa-github"></i>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" target="about_blank" href="mailto: dylanyonghaih@gmail.com">
-                  <i class="fa-solid fa-envelope"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
+        <nav id="nav-bar">
+          <ul>
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#projects">Projects</a>
+            </li>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a
+                target="about_blank"
+                href="https://www.linkedin.com/in/yonghaihuang/"
+              >
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+            </li>
+            <li>
+              <a target="about_blank" href="https://github.com/halflemonpie">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </li>
+            <li>
+              <a target="about_blank" href="mailto: dylanyonghaih@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+            </li>
+          </ul>
         </nav>
       </header>
       <main>
@@ -72,9 +78,10 @@ function App() {
           </div>
         </div>
 
-        <div id="about" className="mt-5">
-          <img src={photo} alt="Yonghai standing in front of trees." />
-
+        <div id="about">
+          <div id="image-container">
+            <img src={photo} alt="Yonghai standing in front of trees." />
+          </div>
           <div id="about-me">
             <h1>About Me</h1>
             <p>
@@ -122,76 +129,141 @@ function App() {
           </div>
         </div>
 
-        <div id="projects" className="d-flex flex-column align-items-center mt-5">
-          <h1 className="mb-3">Projects</h1>
-          <div className="d-flex flex-column">
-            <div className="d-flex justify-content-center align-items-center mb-5">
-              <a
-                target="about_blank"
-                href="https://tiny-babka-6d7956.netlify.app/"
+        <div id="projects">
+          <h1>Projects</h1>
+          <div id="project-cards">
+            <a
+              target="about_blank"
+              href="https://tiny-babka-6d7956.netlify.app/"
+            >
+              <div
+                className="project-card"
+                id="project1"
+                style={{
+                  background:
+                    "url(https://user-images.githubusercontent.com/104039077/169392831-2e14d356-ab61-4bac-90bf-ccaa04082ef8.png)",
+                  backgroundSize: "110%",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+                onMouseEnter={() => handleShown("project1")}
+                onMouseLeave={() => handleHidden("project1")}
               >
-                <div className="d-flex justify-content-center align-items-center">
-                  <img src="https://user-images.githubusercontent.com/104039077/169392831-2e14d356-ab61-4bac-90bf-ccaa04082ef8.png" />
+                <div className="card-detail" hidden={hidden.project1}>
+                  <h1>Spaceman Invader</h1>
+                  <p>A mini spaceman game using HTML, CSS, and JavaScript.</p>
                 </div>
-              </a>
-              <a
-                target="about_blank"
-                href="https://calm-sherbet-80ad34.netlify.app/"
+              </div>
+            </a>
+            <a
+              target="about_blank"
+              href="https://calm-sherbet-80ad34.netlify.app/"
+            >
+              <div
+                className="project-card"
+                id="project2"
+                style={{
+                  backgroundImage: `url(${project2})`,
+                  backgroundSize: "115%",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+                onMouseEnter={() => handleShown("project2")}
+                onMouseLeave={() => handleHidden("project2")}
               >
-                <div className="d-flex justify-content-center align-items-center">
-                  <img src={project2} />
+                <div className="card-detail" hidden={hidden.project2}>
+                  <h1>Shark Sale</h1>
+                  <p>
+                    A product landing page using React, Bootstrap, and Restful
+                    APIs.
+                  </p>
                 </div>
-              </a>
-            </div>
-            <div className="d-flex">
-              <a
-                target="about_blank"
-                href="https://npm-start-fried-rice-kingdom.netlify.app/"
+              </div>
+            </a>
+            <a
+              target="about_blank"
+              href="https://npm-start-fried-rice-kingdom.netlify.app/"
+              id="project3"
+            >
+              <div
+                className="project-card"
+                id="project3"
+                style={{
+                  backgroundImage: `url(https://user-images.githubusercontent.com/47561235/176779538-558050ed-8d1e-4644-b3c2-575b0c30d1b4.png)`,
+                  backgroundSize: "120%",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+                onMouseEnter={() => handleShown("project3")}
+                onMouseLeave={() => handleHidden("project3")}
               >
-                <div className="d-flex justify-content-center align-items-center">
-                  <img src="https://user-images.githubusercontent.com/47561235/176779538-558050ed-8d1e-4644-b3c2-575b0c30d1b4.png" />
+                <div className="card-detail" hidden={hidden.project3}>
+                  <h1>Ground Up</h1>
+                  <p>
+                    A event tracking app that add/delete to-dos with React as
+                    frontend, Express & MongoDB as backend.
+                  </p>
                 </div>
-              </a>
-              <a target="about_blank" href="https://boat-fishing.netlify.app/">
-                <div className="d-flex justify-content-center align-items-center">
-                  <img src={project4} />
+              </div>
+            </a>
+            <a
+              target="about_blank"
+              href="https://boat-fishing.netlify.app/"
+              id="project4"
+            >
+              {/* <div>
+                <img src={project4} alt="project4" />
+              </div> */}
+              <div
+                className="project-card"
+                id="project4"
+                style={{
+                  backgroundImage: `url(${project4})`,
+                  backgroundSize: "110%",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+                onMouseEnter={() => handleShown("project4")}
+                onMouseLeave={() => handleHidden("project4")}
+              >
+                <div className="card-detail" hidden={hidden.project4}>
+                  <h1>Fishing</h1>
+                  <p>
+                    A fishing game that can view your fish collection. <br />Frontend:
+                    React, Tailwind. <br /> Backend: Django, PostgreSQL.
+                  </p>
                 </div>
-              </a>
-            </div>
+              </div>
+            </a>
           </div>
         </div>
 
-        <div id="contact" className="mt-5">
-          <h1 className="text-center">Contact</h1>
-          <div
-            id="contact-content"
-            className="d-flex align-items-center justify-content-center"
-          >
-            <span>
-              <a
-                className="nav-link"
-                target="about_blank"
-                href="https://github.com/halflemonpie"
-              >
-                <i class="fa-brands fa-github"></i>
-                GitHub
-              </a>
-            </span>
-            <span className="ms-3">
-              <a
-                className="nav-link"
-                target="about_blank"
-                href="https://www.linkedin.com/in/yonghaihuang/"
-              >
-                <i class="fa-brands fa-linkedin"></i>
-                LinkedIn
-              </a>
-            </span>
-            <span className="ms-3">
-            <a className="nav-link" target="about_blank" href="mailto: dylanyonghaih@gmail.com">
-                  <i class="fa-solid fa-envelope"></i>
-                  dylanyonghaih@gmail
+        <div id="contact">
+          <h1>Contact</h1>
+          <div id="contact-content">
+            <div id="first-line">
+              <span id="github">
+                <a target="about_blank" href="https://github.com/halflemonpie">
+                  <i class="fa-brands fa-github"></i>
+                  GitHub
                 </a>
+              </span>
+              <span>
+                <a
+                  target="about_blank"
+                  href="https://www.linkedin.com/in/yonghaihuang/"
+                >
+                  <i class="fa-brands fa-linkedin"></i>
+                  LinkedIn
+                </a>
+              </span>
+            </div>
+
+            <span>
+              <a target="about_blank" href="mailto: dylanyonghaih@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                dylanyonghaih@gmail
+              </a>
             </span>
           </div>
         </div>
