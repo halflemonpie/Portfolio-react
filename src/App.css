@@ -1,6 +1,13 @@
 
 body {
   background: #d0f4de;
+  
+}
+
+main {
+  scroll-snap-type: y mandatory;
+  max-height: 100vh;
+  overflow-y: scroll;
 }
 
 header{
@@ -38,6 +45,7 @@ header{
 
 /* home */
 #home {
+  scroll-snap-align: start;
   padding-top: 5vh;
   height: 100vh;
 }
@@ -59,6 +67,7 @@ header{
   padding-top: 5vh;
   height: 100vh;
   display: flex;
+  scroll-snap-align: start;
 
 }
 
@@ -81,8 +90,9 @@ min-width: 50%;
 /* projects */
 #projects {
   padding-top: 5vh;
-  height: 100vh;
+  height: 95vh;
   text-align: center;
+  scroll-snap-align: start;
 }
 
 #projects #project-cards {
@@ -128,11 +138,10 @@ align-items: center;
 
 /* contact */
 #contact {
-
   height: 100vh;
   padding-top: 5vh;
   text-align: center;
-
+  scroll-snap-align: start;
 }
 
 #contact a {

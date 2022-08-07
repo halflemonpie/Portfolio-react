@@ -2,7 +2,7 @@ import "./App.css";
 import photo from "./images/my_photo.jpeg";
 import project2 from "./images/project2.png";
 import project4 from "./images/project4.png";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 // to-do:
 // animation for home page
@@ -14,6 +14,8 @@ function App() {
     project3: false,
     project4: false,
   });
+
+  
 
   const handleShown = (project) => {
     console.log("showing detail");
