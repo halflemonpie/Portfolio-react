@@ -10,9 +10,9 @@ import { useState, useRef } from "react";
 function App() {
   const [hidden, setHidden] = useState({
     project1: true,
-    project2: false,
-    project3: false,
-    project4: false,
+    project2: true,
+    project3: true,
+    project4: true,
   });
 
   
