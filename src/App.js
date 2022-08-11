@@ -2,7 +2,7 @@ import "./App.css";
 import photo from "./images/my_photo.jpeg";
 import project2 from "./images/project2.png";
 import project4 from "./images/project4.png";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 // to-do:
 // animation for home page
